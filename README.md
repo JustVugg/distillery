@@ -1,4 +1,6 @@
-# Distillery
+<p align="center">
+  <img src="distillery.png" alt="Distillery Logo" width="500"/>
+</p>
 
 **Turn your documents into high-quality instruction datasets — with grounding, quality filtering, and provenance baked in.**
 
