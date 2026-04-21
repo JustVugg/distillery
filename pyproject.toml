@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "distillery"
+version = "0.1.0"
+description = "Turn documents into high-quality instruction datasets with LLM-judge quality loops."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+keywords = ["llm", "dataset", "synthetic-data", "fine-tuning", "instruction-tuning", "dpo"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "pydantic>=2.6",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+    "typer>=0.12",
+    "rich>=13.7",
+    "pypdf>=4.0",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+embeddings = [
+    "sentence-transformers>=2.7",
+]
+hf = [
+    "datasets>=2.18",
+]
+mcp = [
+    "mcp>=1.2.0",
+]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+distillery = "distillery.cli:app"
+distillery-mcp = "distillery.mcp_server:main"
+
+[project.urls]
+Homepage = "https://github.com/JustVugg/distillery"
+Issues = "https://github.com/JustVugg/distillery/issues"
+
+[tool.setuptools.packages.find]
+include = ["distillery*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
